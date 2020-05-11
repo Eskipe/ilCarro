@@ -271,4 +271,44 @@
             </column>
         </createTable>
     </changeSet>
+    
+    <changeSet id="2" author="Pz">
+
+        <dropColumn tableName="CAR" columnName="MAKE"></dropColumn>
+        <dropColumn tableName="CAR" columnName="MODEL"></dropColumn>
+        <dropColumn tableName="CAR" columnName="YEARS"></dropColumn>
+
+        <renameTable newTableName="CAR_DETAILS"
+                     oldTableName="CAR"/>
+
+        <createTable tableName="CAR">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="MAKE" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MODEL" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="YEARS" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VERSION" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="UPDATE_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

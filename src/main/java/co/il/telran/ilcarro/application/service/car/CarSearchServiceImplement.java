@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class CarSearchServiceImplement implements CarSearchService{
 
     private final CarRepo carRepo;
+    private final CarDetailsRepo carDetailsRepo;
     private final CarBodyStyleRepo carBodyStyleRepo;
     private final CarImageRepo carImageRepo;
     private final CarLocationRepo carLocationRepo;
@@ -28,7 +29,7 @@ public class CarSearchServiceImplement implements CarSearchService{
     private final CarWeelDriveRepo carWeelDriveRepo;
 
     @Autowired
-    public CarSearchServiceImplement(CarRepo carRepo,
+    public CarSearchServiceImplement(CarRepo carRepo,CarDetailsRepo carDetailsRepo,
                                      CarBodyStyleRepo carBodyStyleRepo,
                                      CarImageRepo carImageRepo,
                                      CarLocationRepo carLocationRepo,
@@ -37,6 +38,7 @@ public class CarSearchServiceImplement implements CarSearchService{
                                      CarTransmissionRepo carTransmissionRepo,
                                      CarWeelDriveRepo carWeelDriveRepo) {
         this.carRepo = carRepo;
+        this.carDetailsRepo = carDetailsRepo;
         this.carBodyStyleRepo = carBodyStyleRepo;
         this.carImageRepo = carImageRepo;
         this.carLocationRepo = carLocationRepo;
@@ -50,7 +52,7 @@ public class CarSearchServiceImplement implements CarSearchService{
     public List<LittleCarResponse> getCars() {
         List<Car> cars = carRepo.findAll();
         return cars.stream()
-                .map((car) -> convertCarToLittleCarResponse(car, carPriceRepo.findByCarId(car.getId())))
+                .map(car -> convertCarToLittleCarResponse(car/*, carPriceRepo.findByCarId(car.getId())*/))
                 .collect(Collectors.toList());
     }
 
@@ -73,14 +75,14 @@ public class CarSearchServiceImplement implements CarSearchService{
         return null;
     }
 
-    private LittleCarResponse convertCarToLittleCarResponse(Car car, CarPrice carPrice) {
+    private LittleCarResponse convertCarToLittleCarResponse(Car car/*, CarPrice carPrice*/) {
         return LittleCarResponse.builder()
                 .carId(car.getId())
                 .make(car.getMake())
                 .model(car.getModel())
                 .year(car.getYear())
-                .price(carPrice.getPrice())
-                .imageCar(new String())
+//                .price(carPrice.getPrice())
+//                .previewImageCar(new String())
                 .build();
     }
 }
