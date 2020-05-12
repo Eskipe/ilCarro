@@ -81,8 +81,8 @@ public class CarSearchServiceImplement implements CarSearchService{
                 .make(car.getMake())
                 .model(car.getModel())
                 .year(car.getYear())
-//                .price(carPrice.getPrice())
-//                .previewImageCar(new String())
+               // .price(carPrice.getPrice())
+               // .previewImageCar(new String())
                 .build();
     }
 }

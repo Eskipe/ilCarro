@@ -13,7 +13,7 @@ public class LittleCarResponse {
     private String make;
     private String model;
     private String year;
-//    private String previewImageCar;
-//    private Double price;
+    private String previewImageCar;
+    private Double price;
 
 }

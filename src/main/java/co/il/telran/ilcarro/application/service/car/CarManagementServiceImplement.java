@@ -61,4 +61,14 @@ public class CarManagementServiceImplement implements CarManagementService{
     public void deleteCar(Long carId) {
 
     }
+
+    @Override
+    public void makeAvailable(Long carId) {
+
+    }
+
+    @Override
+    public void makeUnavailable(Long carId) {
+
+    }
 }

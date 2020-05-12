@@ -22,3 +22,4 @@ public class CarLocationCreateDto {
     @NotNull
     private String zip;
 }
+

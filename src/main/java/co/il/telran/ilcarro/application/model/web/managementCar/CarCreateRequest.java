@@ -1,7 +1,5 @@
 package co.il.telran.ilcarro.application.model.web.managementCar;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -11,22 +9,18 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@ApiModel
 public class CarCreateRequest {
 
     @NotBlank
-    @ApiModelProperty(example = "My big car")
     private String make;
     @NotBlank
-    @ApiModelProperty(example = "BMV")
     private String model;
     @NotBlank
-    @ApiModelProperty(example = "2008")
     private String year;
-
+//    @NotBlank
 //    private String previewImageCar;
 //    @Min(value = 1)
 //    @NotNull
