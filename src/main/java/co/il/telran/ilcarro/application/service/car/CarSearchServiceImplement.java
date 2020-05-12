@@ -80,7 +80,7 @@ public class CarSearchServiceImplement implements CarSearchService{
                 .model(car.getModel())
                 .year(car.getYear())
                 .price(carPrice.getPrice())
-                .imageCar(new String())
+                .previewImageCar(new String())
                 .build();
     }
 }

@@ -271,4 +271,42 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="2" author="Motin">
+        <createTable tableName="CAR_STATUS">
+            
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="CAR_ID" type="BIGINT">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_car_status_car"
+                        references="CAR(ID)"/>
+
+            </column>
+
+            <column name="STATUS" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+           
+            <column name="UPDATE_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+            
+        </createTable>
+
+        <dropColumn tableName="CAR_RATING" columnName="RATING"/>
+        
+        <addColumn tableName="CAR_RATING">
+            <column name="RATING" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addDefaultValue tableName="CAR_STATUS" columnName="STATUS" defaultValueBoolean="true" />
+    </changeSet>
 </databaseChangeLog>

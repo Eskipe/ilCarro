@@ -8,5 +8,6 @@ public interface CarManagementService {
     void createCar(CarCreateRequest carCreateRequest);
     RichCarResponse updateCar(CarCreateRequest carCreateRequest);
     void deleteCar(Long carId);
-
+    void makeAvailable(Long carId);
+    void makeUnavailable(Long carId);
 }
