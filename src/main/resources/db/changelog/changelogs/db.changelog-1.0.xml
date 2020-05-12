@@ -309,4 +309,56 @@
         </addColumn>
         <addDefaultValue tableName="CAR_STATUS" columnName="STATUS" defaultValueBoolean="true" />
     </changeSet>
+
+    <changeSet id="2" author="Pz">
+
+        <dropColumn tableName="CAR" columnName="MAKE"/>
+        <dropColumn tableName="CAR" columnName="MODEL"/>
+        <dropColumn tableName="CAR" columnName="YEARS"/>
+
+        <renameTable newTableName="CAR_DETAILS"
+                     oldTableName="CAR"/>
+
+        <createTable tableName="CAR">
+
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="MAKE" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MODEL" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="YEARS" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VERSION" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="UPDATE_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="Motin">
+        <addColumn tableName="CAR_DETAILS">
+            <column name="CAR_ID" type="BIGINT">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_car_details_car"
+                        references="CAR(ID)"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
