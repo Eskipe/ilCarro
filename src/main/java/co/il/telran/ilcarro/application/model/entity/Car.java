@@ -23,3 +23,4 @@ public class Car extends Base {
 	@Column(name="VERSION")
 	private Integer version;
 }
+
